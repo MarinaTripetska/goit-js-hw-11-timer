@@ -1,0 +1,25 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgb(193, 240, 245);
+}
+
+.timer {
+    
+    display: flex;
+    justify-content: center;
+     }
+
+.field{
+    font-size: 30px;
+    font-weight: 700;
+    padding: 30px;
+border: solid 1px #724949;
+    background-color: rgb(228, 146, 146);
+
+}
+.field:not(:last-child){
+    margin-right: 20px;
+}
