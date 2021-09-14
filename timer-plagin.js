@@ -3,13 +3,12 @@ export class CountdownTimer{
     constructor({selector,targetTime}) {
         this.selector = document.querySelector(selector);
         this.targetTime = targetTime;
-
+        this.intervalId = null;
     }
 
-    timer() {
+    start() {
         const {daysContent, hoursContent, minutesContent, secondsContent}  = this.getRefs();
-        
-        setInterval(() => {
+        this.intervalId = setInterval(() => {
             let currentTime = Date.now()
             const time = this.targetTime - currentTime;
             
@@ -26,7 +25,17 @@ export class CountdownTimer{
         }, 1000);
         
     }
-    
+    reset() {
+        clearInterval(this.intervalId);
+                const {daysContent, hoursContent, minutesContent, secondsContent}  = this.getRefs();
+
+        this.writeContentHTML(daysContent, '00');
+            this.writeContentHTML(hoursContent, '00');
+            this.writeContentHTML(minutesContent, '00');
+            this.writeContentHTML(secondsContent, '00');
+        
+        
+    }
     writeContentHTML(place, value) {
         place.textContent = value;
     };
@@ -51,11 +60,11 @@ export class CountdownTimer{
 
      getRefs() {
         const daysContent = this.selector.querySelector('[data-value="days"]');
-    const hoursContent = this.selector.querySelector('[data-value="hours"]');
-    const minutesContent = this.selector.querySelector('[data-value="mins"]');
-    const secondsContent = this.selector.querySelector('[data-value="secs"]');
+        const hoursContent = this.selector.querySelector('[data-value="hours"]');
+        const minutesContent = this.selector.querySelector('[data-value="mins"]');
+        const secondsContent = this.selector.querySelector('[data-value="secs"]');
+        
          return { daysContent, hoursContent, minutesContent, secondsContent };
-          
     };
    
 };

@@ -2,10 +2,21 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     height: 100vh;
     background-color: rgb(193, 240, 245);
 }
+button{
+    font-weight: 700;
+    padding: 10px 30px;
+    background-color: rgb(245, 184, 184);
+    border: solid 1px #724949;
+    border-radius: 15%;
+}
 
+.form {
+  margin-bottom: 30px;  
+}
 .timer {
     
     display: flex;
@@ -17,6 +28,7 @@ body{
     font-weight: 700;
     padding: 30px;
 border: solid 1px #724949;
+ border-radius: 15%;
     background-color: rgb(228, 146, 146);
 
 }

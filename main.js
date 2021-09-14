@@ -1,40 +1,40 @@
 
-
+import refs from './refs.js';
+const {form, createBtn, resetBtn } = refs;
 
 import { CountdownTimer } from './timer-plagin.js';
 
-// const timerStart = new CountdownTimer({
-//   selector: '#timer-1',
-//   targetTime: new Date( ),
-// })
-// timerStart.timer()
+// const createBtn = document.querySelector('[data-btn]')
 
-const createBtn = document.querySelector('[data-btn]')
-console.log(createBtn);
-const form = document.querySelector('[data-form]');
-console.log(form);
-let targetDate = '';
+// const form = document.querySelector('[data-form]');
 
-form.addEventListener('submit', getTargetValue);
+// let targetDate = '';
+let timer = null;
+form.addEventListener('submit', startTimer);
+resetBtn.addEventListener('click', resetTimer);
 
-
-
-function getTargetValue(e) {
-   
-    
+function startTimer(e) {
+    createBtn.disabled = true;
     e.preventDefault();
-    const {  elements: { date }  } = e.currentTarget;
     
-    const t = createNewTimer(date.value)
-    t.timer()
-    
+    const { elements: { date } } = e.currentTarget;
+   
+    if (new Date(date.value) > Date.now()) {
+        timer = createNewTimer(date.value)
+        timer.start()
+     }
 }
 
+function resetTimer() {
+    createBtn.disabled = false;
+    if (timer !== null) {
+        timer.reset()
+        
+         console.log(timer);
+    }
+};
 
 function createNewTimer(value) {
-    
-   
-
    return  new CountdownTimer(
     {
         selector: `#timer-1`,
